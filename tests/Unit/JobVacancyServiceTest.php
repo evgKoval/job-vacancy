@@ -22,7 +22,7 @@ class JobVacancyServiceTest extends TestCase
     }
 
     /**
-     * A basic unit test example.
+     * A user can fetch a list of vacancies.
      *
      * @return void
      */
@@ -34,5 +34,21 @@ class JobVacancyServiceTest extends TestCase
 
         $this->assertInstanceOf(Collection::class, $result);
         $this->assertCount(10, $result);
+    }
+
+    /**
+     * A user can fetch a single job vacancy.
+     *
+     * @return void
+     */
+    public function test_a_user_can_fecth_a_single_job_vacancy()
+    {
+        $jobVacancy = JobVacancy::factory()->create();
+
+        $result = $this->jobVacancyService->getJobVacancyById($jobVacancy->id);
+
+        $this->assertInstanceOf(JobVacancy::class, $result);
+        $this->assertEquals($jobVacancy->title, $result->title);
+        $this->assertEquals($jobVacancy->description, $result->description);
     }
 }

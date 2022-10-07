@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/job-vacancies', [JobVacancyController::class, 'index']);
+Route::get('/job-vacancies/{id}', [JobVacancyController::class, 'show']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [UserController::class, 'getUser']);

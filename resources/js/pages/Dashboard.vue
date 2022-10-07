@@ -1,9 +1,14 @@
 <template>
     <div>
         <h1 class="text-3xl">Dashboard</h1>
-        <div v-for="jobVacancy in jobVacancies" class="overflow-hidden mt-6 bg-white shadow rounded-lg">
+        <div v-for="jobVacancy in jobVacancies" :key="jobVacancy.id"
+             class="overflow-hidden mt-6 bg-white shadow rounded-lg">
             <div class="px-4 py-5 px-6">
-                <h3 class="text-lg font-medium leading-6 text-gray-900">{{ jobVacancy.title }}</h3>
+                <a class="text-lg font-medium leading-6 text-gray-900">
+                    <router-link :to="{ name: 'job-vacancy', params: { id: jobVacancy.id }}">
+                        {{ jobVacancy.title }}
+                    </router-link>
+                </a>
                 <p class="mt-1 max-w-2xl text-sm text-gray-500">{{ jobVacancy.description }}</p>
             </div>
         </div>
