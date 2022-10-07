@@ -54,11 +54,12 @@ class JobVacancyController extends Controller
      * Display the specified resource.
      *
      * @param \App\Models\JobVacancy $jobVacancy
-     * @return \Illuminate\Http\Response
+     * @return JobVacancyResource
      */
-    public function show(JobVacancy $jobVacancy)
+    public function show(string $id)
     {
-        //
+        $jobVacancy = $this->jobVacancyService->getJobVacancyById($id);
+        return new JobVacancyResource($jobVacancy);
     }
 
     /**

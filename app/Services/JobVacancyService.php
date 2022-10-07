@@ -33,4 +33,15 @@ class JobVacancyService
     {
         return $this->jobVacancyRepository->all();
     }
+
+    /**
+     * Get a job vacancy by id.
+     *
+     * @param string $id
+     * @return mixed
+     */
+    public function getJobVacancyById(string $id)
+    {
+        return $this->jobVacancyRepository->show($id);
+    }
 }
